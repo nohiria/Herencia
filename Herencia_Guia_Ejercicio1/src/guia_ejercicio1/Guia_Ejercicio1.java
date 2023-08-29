@@ -5,6 +5,11 @@
  */
 package guia_ejercicio1;
 
+import Entities.Animal;
+import Entities.Cat;
+import Entities.Dog;
+import java.util.ArrayList;
+
 /**
  *
  * @author nohyv
@@ -15,7 +20,18 @@ public class Guia_Ejercicio1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ArrayList<Animal> animalsList= new ArrayList<>();
+        Animal a = new Animal();
+        Animal b = new Dog();
+        Animal c = new Cat();
+        
+        animalsList.add(a);
+        animalsList.add(b);
+        animalsList.add(c);
+        
+        animalsList.forEach((animal) -> {
+            animal.makeNoise();
+        });
     }
     
 }
