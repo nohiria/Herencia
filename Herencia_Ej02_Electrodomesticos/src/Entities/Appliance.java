@@ -5,12 +5,14 @@
  */
 package Entities;
 
+import java.util.Scanner;
+
 /**
  *
  * @author nohyv
  */
 public class Appliance {
-    protected double cost;
+    protected double price;
     protected String color;
     protected char energyConsumption;
     protected double weightKilos;
@@ -19,20 +21,20 @@ public class Appliance {
     public Appliance() {
     }
 
-    public Appliance(double cost, String color, char energyConsumption, double weightKilos) {
-        this.cost = cost;
-        this.color = color;
-        this.energyConsumption= energyConsumption;
-        this.weightKilos = weightKilos;
+    public Appliance(double price, String color, char energyConsumption, double weightKilos) {
+        this.price = price;
+        this.color = checkColor(color);
+        this.energyConsumption= checkEneryConsumption(energyConsumption);
+        this.weightKilos = checkWeight(weightKilos);
     }
     
     //<editor-fold desc="Getters&Setters">
-    public double getCost() {
-        return cost;
+    public double getPrice() {
+        return price;
     }
 
-    public void setCost(double cost) {
-        this.cost = cost;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getColor() {
@@ -40,7 +42,7 @@ public class Appliance {
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.color = checkColor(color);
     }
 
     public char getEnergyConsumption() {
@@ -48,7 +50,7 @@ public class Appliance {
     }
 
     public void setEnergyConsumption(char energyConsumption) {
-        this.energyConsumption = energyConsumption;
+        this.energyConsumption = checkEneryConsumption(energyConsumption);
     }
 
     public double getWeightKilos() {
@@ -56,7 +58,7 @@ public class Appliance {
     }
 
     public void setWeightKilos(double weightKilos) {
-        this.weightKilos = weightKilos;
+        this.weightKilos = checkWeight(weightKilos);
     } 
     //</editor-fold>
     
@@ -67,7 +69,74 @@ public class Appliance {
         return letterIsValid ? Character.toUpperCase(letter) : 'F';
     }
     
+    private String checkColor(String color){
+        boolean colorIsValid= (color.equalsIgnoreCase("black") || color.equalsIgnoreCase("red") || color.equalsIgnoreCase("blue") || color.equalsIgnoreCase("gray"));
+        
+        return colorIsValid ? color : "white";
+    }
     
-
+    private double checkWeight(double weight){
+        if(weight>1 && weight<200){
+            return weight;
+        }
+        return 50;
+    }
+    
+    public void createAppliance(){
+        Scanner input= new Scanner(System.in);
+        
+        System.out.println("Creating Appliance:");
+        System.out.println("--------------------------");
+        
+        System.out.print("Enter the weight (in Kg): ");
+        double weight= input.nextDouble();
+        while (weight<1 && weight >200){
+            System.out.print("Enter a valid weight: ");
+            weight = input.nextDouble();
+        }
+        setWeightKilos(weight);
+        System.out.print("Enter the color: ");
+        setColor(input.nextLine());
+        System.out.print("Enter the energy consumption (A to F): ");
+        setEnergyConsumption(input.nextLine().charAt(0));
+        setPrice(finalPrice());
+    }
+    
+    private double finalPrice(){
+        double finalPrice= 0;
+        
+        switch(this.energyConsumption){
+            case 'A':
+                finalPrice= 1000;
+                break;
+            case 'B':
+                finalPrice= 800;
+                break;
+            case 'C':
+                finalPrice= 600;
+                break;
+            case 'D':
+                finalPrice= 500;
+                break;
+            case 'E':
+                finalPrice= 300;
+                break;
+            case 'F':
+                finalPrice= 100;
+                break;
+        }
+        
+        if(this.weightKilos>=1 && this.weightKilos<20){
+            finalPrice+=100;
+        }else if(this.weightKilos>=20 && this.weightKilos<50){
+            finalPrice+=500;
+        }else if(this.weightKilos>=50 && this.weightKilos<80){
+            finalPrice+= 800;
+        }else if(this.weightKilos>=80){
+            finalPrice+= 1000;
+        }
+        
+        return finalPrice;
+    }
     
 }
