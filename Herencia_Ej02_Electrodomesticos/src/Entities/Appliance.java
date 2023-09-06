@@ -21,11 +21,11 @@ public class Appliance {
     public Appliance() {
     }
 
-    public Appliance(double price, String color, char energyConsumption, double weightKilos) {
-        this.price = price;
+    public Appliance(String color, char energyConsumption, double weightKilos) {
         this.color = checkColor(color);
         this.energyConsumption= checkEneryConsumption(energyConsumption);
         this.weightKilos = checkWeight(weightKilos);
+        this.price = finalPrice();
     }
     
     //<editor-fold desc="Getters&Setters">
