@@ -72,6 +72,9 @@ el precio final de los dos electrodomésticos.
 
 package herencia_ej02_electrodomesticos;
 
+import Entities.Television;
+import Entities.WashingMachine;
+
 /**
  *
  * @author nohyv
@@ -82,7 +85,14 @@ public class Herencia_Ej02_Electrodomesticos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        WashingMachine ws= new WashingMachine();
+        Television tv= new Television();
+        
+        ws.createWashingMachine();
+        tv.createTelevision();
+        
+        System.out.println("The washing machine final price: "+ ws.getPrice());
+        System.out.println("The televison final price: "+ tv.getPrice());
     }
     
 }

@@ -89,17 +89,20 @@ public class Appliance {
         System.out.println("--------------------------");
         
         System.out.print("Enter the weight (in Kg): ");
-        double weight= input.nextDouble();
+        double weight= Double.parseDouble(input.nextLine());
         while (weight<1 && weight >200){
             System.out.print("Enter a valid weight: ");
-            weight = input.nextDouble();
+            weight = Double.parseDouble(input.nextLine());
         }
         setWeightKilos(weight);
         System.out.print("Enter the color: ");
         setColor(input.nextLine());
+        System.out.println("peso="+getWeightKilos());
         System.out.print("Enter the energy consumption (A to F): ");
         setEnergyConsumption(input.nextLine().charAt(0));
+        System.out.println("consumo="+getEnergyConsumption());
         setPrice(finalPrice());
+        System.out.println("Precio final 1 "+getPrice());
     }
     
     private double finalPrice(){
