@@ -1,5 +1,5 @@
 
-//<editor-fold desc="Exercise statement">
+//<editor-fold desc="Exercise 2 statement">
 /*
 Crear una superclase llamada Electrodoméstico con los siguientes atributos: precio, color,
 consumo energético (letras entre A y F) y peso.
@@ -70,10 +70,23 @@ el precio final de los dos electrodomésticos.
  */
 //</editor-fold>
 
+//<editor-fold desc="Exercise 3 statement">
+//Siguiendo el ejercicio anterior, en el main vamos a crear un ArrayList de Electrodomésticos
+//para guardar 4 electrodomésticos, ya sean lavadoras o televisores, con valores ya asignados.
+//Luego, recorrer este array y ejecutar el método precioFinal() en cada electrodoméstico. Se
+//deberá también mostrar el precio de cada tipo de objeto, es decir, el precio de todos los
+//televisores y el de las lavadoras. Una vez hecho eso, también deberemos mostrar, la suma del
+//precio de todos los Electrodomésticos. Por ejemplo, si tenemos una lavadora con un precio de
+//2000 y un televisor de 5000, el resultado final será de 7000 (2000+5000) para
+//electrodomésticos, 2000 para lavadora y 5000 para televisor.
+//</editor-fold>
+
 package herencia_ej02_electrodomesticos;
 
+import Entities.Appliance;
 import Entities.Television;
 import Entities.WashingMachine;
+import java.util.ArrayList;
 
 /**
  *
@@ -85,14 +98,47 @@ public class Herencia_Ej02_Electrodomesticos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        WashingMachine ws= new WashingMachine();
-        Television tv= new Television();
+//        WashingMachine ws= new WashingMachine();
+//        Television tv= new Television();
+//        
+//        ws.createWashingMachine();
+//        tv.createTelevision();
+//        
+//        System.out.println("The washing machine final price: "+ ws.getPrice());
+//        System.out.println("The televison final price: "+ tv.getPrice());
         
-        ws.createWashingMachine();
-        tv.createTelevision();
+        //Ejercicio 3
+        ArrayList<Appliance> appliancesList= new ArrayList<>();
         
-        System.out.println("The washing machine final price: "+ ws.getPrice());
-        System.out.println("The televison final price: "+ tv.getPrice());
+        WashingMachine ws1= new WashingMachine(32, "black", 'F', 81);
+        WashingMachine ws2= new WashingMachine(20, "white", 'A', 50);
+        Television tv1= new Television(42, true, "gray", 'F', 81);
+        Television tv2= new Television(30, false, "blue", 'C', 53);
+        
+        appliancesList.add(ws1);
+        appliancesList.add(ws2);
+        appliancesList.add(tv1);
+        appliancesList.add(tv2);
+        
+        int applianceNumber= 0;
+        double washingMachinesTotalAmount= 0;
+        double tvsTotalAmount= 0;
+        
+        for(Appliance appliance: appliancesList){
+            applianceNumber++;
+            System.out.println("Appliance n°"+applianceNumber);
+            if(appliance instanceof WashingMachine){
+                System.out.println("Washing machine price: "+ appliance.getPrice());
+                washingMachinesTotalAmount+= appliance.getPrice();
+            }else if(appliance instanceof Television){
+                System.out.println("Television price: "+ appliance.getPrice());
+                tvsTotalAmount+= appliance.getPrice();
+            }
+        }
+        
+        System.out.println("Total amount for all appliances: "+ (washingMachinesTotalAmount+tvsTotalAmount));
+        System.out.println("Total amount for all washing machines: "+ washingMachinesTotalAmount);
+        System.out.println("Total amount for all TV: "+tvsTotalAmount);
     }
     
 }
