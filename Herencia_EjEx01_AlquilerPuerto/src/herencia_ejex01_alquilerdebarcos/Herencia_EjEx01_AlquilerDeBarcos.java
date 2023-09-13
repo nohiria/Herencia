@@ -20,12 +20,7 @@ precio final de su alquiler.
  */
 package herencia_ejex01_alquilerdebarcos;
 
-import Entities.Boat;
-import Entities.Motorboat;
-import Entities.Sailboat;
-import Entities.Yacht;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import Services.RentalService;
 
 /**
  *
@@ -37,34 +32,9 @@ public class Herencia_EjEx01_AlquilerDeBarcos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayList<Boat> boatsList= new ArrayList<>();
-        
-        Boat boat1= new Boat(892182, 5, 2001);
-        Boat boat2= new Boat(167829, 6, 2001);
-        Sailboat sailboat1= new Sailboat(2, 189182, 8, 2000);
-        Motorboat motorboat1= new Motorboat(15, 927381, 6, 2012);
-        Motorboat motorboat2= new Motorboat(15, 123389, 7, 2005);
-        Yacht yacht1= new Yacht(1, 15, 120922, 10, 1998);
-        
-        boatsList.add(boat1);
-        boatsList.add(boat2);
-        boatsList.add(sailboat1);
-        boatsList.add(motorboat1);
-        boatsList.add(motorboat2);
-        boatsList.add(yacht1);
-        
-        
-        
+        RentalService rs= new RentalService();
+        rs.rentalMenu();
+           
     }
-    
-    public static void showMenu(){
-        System.out.println("Rent a Boat");
-        System.out.println("Choose a type of boat for rent");
-        System.out.println("1. Common boat");
-        System.out.println("2. Sailboat");
-        System.out.println("3. Motorboat");
-        System.out.println("4. Yacht");
-    }
-    
     
 }

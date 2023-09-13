@@ -5,8 +5,6 @@
  */
 package Entities;
 
-import java.time.LocalDate;
-
 /**
  *
  * @author nohyv

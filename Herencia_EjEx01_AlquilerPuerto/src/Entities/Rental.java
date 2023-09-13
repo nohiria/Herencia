@@ -17,14 +17,14 @@ public class Rental {
     private int customerID;
     private LocalDate startDate;
     private LocalDate endDate;
-    private int position;
+    private String position;
     private Boat boat;
     
     //Constructors
     public Rental() {
     }
 
-    public Rental(String customerName, int customerID, LocalDate startDate, LocalDate endDate, int position, Boat boat) {
+    public Rental(String customerName, int customerID, LocalDate startDate, LocalDate endDate, String position, Boat boat) {
         this.customerName = customerName;
         this.customerID = customerID;
         this.startDate = startDate;
@@ -66,11 +66,11 @@ public class Rental {
         this.endDate = endDate;
     }
 
-    public int getPosition() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPosition(int position) {
+    public void setPosition(String position) {
         this.position = position;
     }
 
